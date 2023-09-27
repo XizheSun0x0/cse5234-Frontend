@@ -28,6 +28,7 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "no-extra-semi":"error"
+        "no-extra-semi": "error",
+        "react/display-name": "off" 
     }
 }

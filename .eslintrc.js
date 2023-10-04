@@ -29,6 +29,7 @@ module.exports = {
     ],
     "rules": {
         "no-extra-semi": "error",
-        "react/display-name": "off" 
+        "react/display-name": "off",
+        "no-unused-vars": "off",
     }
 }

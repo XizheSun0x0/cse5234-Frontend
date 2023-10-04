@@ -12,7 +12,7 @@ const SampleFooter = () => (
   autoFocus
   columns={[
     {
-      title: 'contact us',
+      title: 'Contact Us',
       items: [
         {
           title: 'adress',

@@ -30,7 +30,7 @@ function App() {
       <Route path='/cart' element={<Cart/>} />
 
       <Route path='/purchase' element={<Purchase/>} />
-      <Route path="/" element={<Navigate replace to="/purchase" />} />
+      <Route path="/" element={<Navigate replace to="/home" />} />
       <Route path='/purchase/paymentEntry' element={<PaymentEntry/>} />
       <Route path='/purchase/shippingEntry' element={<ShippingEntry/>} />
       <Route path='/purchase/viewOrder' element={<ViewOrder/>} />

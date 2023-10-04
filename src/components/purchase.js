@@ -15,7 +15,7 @@ const Purchase = () => {
     console.log("order: ", order);
 
     return (
-        <div>
+        <div className="purchase">
             <form onSubmit={handlesubmit}>
                 <label>Product 1</label>
                 <input 

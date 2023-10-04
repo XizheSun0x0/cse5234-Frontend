@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 
 function NavBar() {
@@ -13,7 +14,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            CSE5234
+             Learn & Lend
             <i className="fas fa-code"></i>
           </NavLink>
 
@@ -59,7 +60,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Shopping Cart
+                <ShoppingCart/>
               </NavLink>
             </li>
           </ul>

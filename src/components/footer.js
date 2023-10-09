@@ -15,17 +15,17 @@ const SampleFooter = () => (
       title: 'Contact Us',
       items: [
         {
-          title: 'adress',
-          url: 'https://ceo/',
+          title: 'adress : Caldwell lab 120 2024 Neil Ave, Columbus, OH',
+          url: 'https://maps.app.goo.gl/1CJWcoB1q758VDWe6',
           openExternal: true,
         },
         {
-          title: 'email',
-          url: 'https://ceo/',
+          title: 'email : earnandlend@gmail.com',
+          url: 'https://www.microsoft.com/en-us/microsoft-365/outlook/',
           openExternal: true,
         },
         {
-          title: 'phone',
+          title: 'phone : 937-581-3659',
           url: 'https://ceo/',
           openExternal: true,
         },

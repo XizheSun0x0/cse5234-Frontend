@@ -14,6 +14,7 @@ import SampleFooter from "./components/footer";
 import Home from './components/home';
 import About from './components/about';
 import Cart from './components/cart';
+import Support from './components/support';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Routes>  
       <Route path='/home' element={<Home/>} />
       <Route path='/about' element={<About/>} />
+      <Route path='/support' element={<Support/>}/>
       <Route path='/cart' element={<Cart/>} />
 
       <Route path='/purchase' element={<Purchase/>} />

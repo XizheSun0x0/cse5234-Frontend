@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.content{
+  font-family: "Copperplate", fantasy;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

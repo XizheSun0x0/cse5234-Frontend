@@ -8,7 +8,6 @@ function NavBar() {
 
 	const handleClick = () => setClick(!click);
 	return (
-		<>
 			<nav className="navbar">
 				<div className="nav-container">
 					<NavLink exact to="/" className="nav-logo">
@@ -78,7 +77,7 @@ function NavBar() {
 					</div>
 				</div>
 			</nav>
-		</>
+
 	);
 }
 

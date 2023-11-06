@@ -1,4 +1,5 @@
 import React from 'react';
+import './about.css'
 import benimg from './images/Ben.png';
 import xizheimg from './images/Xizhe.png';
 import vishuimg from './images/Vishu.png';

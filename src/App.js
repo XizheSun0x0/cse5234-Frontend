@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import './App.css';
-import React from "react";
+import React,{useState, useEffect} from "react";// for connection with backend
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import Purchase from './components/purchase';
@@ -18,6 +18,20 @@ import Support from './components/support';
 
 
 function App() {
+
+  const [data, setData] = useState([{}]);
+
+    useEffect(() => {
+        // Fetch the data from the Flask backend
+        fetch("/home").then(
+          res => res.json()
+        ).then(
+          data => {
+            setData(data)
+            console.log(data)
+          }
+        )
+    }, []);
 
 
   return (

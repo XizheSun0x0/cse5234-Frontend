@@ -9,7 +9,7 @@ const PaymentEntry = () => {
   const handlesubmit = (e) => {
     navigate("/purchase/shippingEntry", { state: location.state });
   };
-  console.log("location:", location);
+  console.log("location:", location.state);
   return (
     <div>
       <h1>Credit card info</h1>

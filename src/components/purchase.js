@@ -22,7 +22,7 @@ const Purchase = () => {
                     ...prevOrder,
                     items: items.map(item => ({
                         ...item,
-                        buyQuantity: 0 // Assuming you want to initialize buyQuantity as 0
+                        quantity: 0 // Assuming you want to initialize buyQuantity as 0
                     }))
                 }));
             });
@@ -30,11 +30,25 @@ const Purchase = () => {
 
     // This handles changes to any of the quantity inputs.
     const handleQuantityChange = (itemId, quantity) => {
-        setOrder({
-            ...order,
-            items: order.items.map(item =>
-                item.id === itemId ? { ...item, buyQuantity: Number(quantity) } : item
-            )
+        setOrder(prevOrder => {
+            const updatedItems = prevOrder.items.map(item =>
+                item.id === itemId ? { ...item, quantity: Number(quantity) } : item
+            );
+
+            const selectedItems = updatedItems
+                .filter(item => item.quantity > 0)
+                .map(item => ({
+                    id: item.id,
+                    quantity: item.quantity,
+                    name: item.name,
+                    price: item.price,
+                }));
+
+            return {
+                ...prevOrder,
+                items: updatedItems,
+                selected_items: selectedItems
+            };
         });
     };
 
@@ -47,7 +61,7 @@ const Purchase = () => {
                         <input 
                             type="number"
                             min="0"
-                            max={item.available_quantity}
+                            // max={item.available_quantity}
                             value={item.buyQuantity}
                             onChange={(e) => handleQuantityChange(item.id, e.target.value)}
                             required

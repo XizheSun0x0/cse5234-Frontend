@@ -8,7 +8,7 @@ const ShippingEntry = () => {
     const handlesubmit = (e) => {
         navigate('/purchase/vieworder', { state: location.state});
     }
-
+    console.log(location.state)
     return (
         <div>
             <form onSubmit={handlesubmit}>

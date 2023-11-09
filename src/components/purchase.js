@@ -2,15 +2,14 @@ import React, { useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 
 const Purchase = () => {
-    const [order, setOrder] = useState({
-        selected_items: [],items: [], credit_card_numer: '', expir_date: '', cvvcode: '',
-        card_holder_name: '',name:'' ,address_1: '', address_2: '', city: '', state: '', zip: '',
+    const [inventory, setInventory] = useState({
+        selected_items: [],available_items: [],
     });
     const navigate = useNavigate();
     const handlesubmit = (e) => {
-        navigate('/purchase/paymentEntry', { state:order});
+        navigate('/purchase/paymentEntry', { state:inventory.selected_items});
     }
-    console.log("order: ", order);
+    console.log("order: ", inventory);
 
 
     useEffect(() => {
@@ -18,36 +17,22 @@ const Purchase = () => {
             .then(res => res.json())
             .then(items => {
                 // Create a new object for the order state with the fetched items
-                setOrder(prevOrder => ({
-                    ...prevOrder,
-                    items: items.map(item => ({
-                        ...item,
-                        quantity: 0 // Assuming you want to initialize buyQuantity as 0
-                    }))
+                setInventory(inventory => ({
+                    ...inventory,
+                    available_items: items,
                 }));
             });
     }, []);
 
     // This handles changes to any of the quantity inputs.
-    const handleQuantityChange = (itemId, quantity) => {
-        setOrder(prevOrder => {
-            const updatedItems = prevOrder.items.map(item =>
-                item.id === itemId ? { ...item, quantity: Number(quantity) } : item
-            );
-
-            const selectedItems = updatedItems
-                .filter(item => item.quantity > 0)
-                .map(item => ({
-                    id: item.id,
-                    quantity: item.quantity,
-                    name: item.name,
-                    price: item.price,
-                }));
-
+    const handleQuantityChange = (item, quantity) => {
+        setInventory(inventory => {
+            inventory.selected_items.push({
+                ...item,
+                selected_quantity: quantity,
+            });
             return {
-                ...prevOrder,
-                items: updatedItems,
-                selected_items: selectedItems
+                ...inventory
             };
         });
     };
@@ -55,21 +40,21 @@ const Purchase = () => {
     return (
         <div className="purchase">
             <form onSubmit={handlesubmit}>
-                {order.items.map((item) => (
+                {inventory.available_items.map((item) => (
                     <div key={item.id} className="item-entry">
                         <label>{item.name} (${item.price})</label>
                         <input 
                             type="number"
                             min="0"
-                            // max={item.available_quantity}
+                            max={item.available_quantity}
                             value={item.buyQuantity}
-                            onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                            onChange={(e) => handleQuantityChange(item, e.target.value)}
                             required
                         />
                         <br />
                     </div>
                 ))}
-                <button type="submit" className="button">Pay</button>
+                <button type="submit" className="button">Add to cart</button>
             </form>
         </div>
     );

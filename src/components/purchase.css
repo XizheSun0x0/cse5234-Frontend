@@ -1,14 +1,14 @@
 .purchase{
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
     width: 100%;
-    max-width: 600px;
+    max-width:600px;
     margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    padding: 100px;
+    box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 .payment {
-    max-width: 400px;
+    max-width: 40px;
     margin: 0 auto;
     text-align: center;
   }
@@ -44,13 +44,20 @@
     display: block;
   }
   .button {
-    background: #f1356d;
-    color: #fff;
+    background: #000000;
+    color: #ffffff;
     border: 0;
+    font-family: "Copperplate", fantasy;
+    font-size:20px ;
     padding: 8px;
-    border-radius: 8px;
-    text-align: left;
+    border-radius: 10px;
+    text-align: center;
     cursor: pointer;
+    border: #262021;
+  }
+
+  .button:hover {
+    background-color: #808080;
   }
   
   .purchase-form {
@@ -63,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 100px;
     border: 1px solid #eee;
     border-radius: 4px;
     height: fit-content
@@ -71,13 +78,14 @@
 
 .item-name {
     font-weight: bold;
+    font-size: 20px;
 }
 
 .item-price {
-    color: #666;
+    color: #000000;
 }
 
 .item-quantity {
-    width: 60px;
+    width: 100px;
     text-align: center;
 }

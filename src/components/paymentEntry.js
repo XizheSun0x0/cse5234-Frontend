@@ -7,7 +7,7 @@ const PaymentEntry = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const handlesubmit = (e) => {
-    navigate("/purchase/shippingEntry", { state: location.state });
+    navigate("/shippingEntry", { state: location.state });
   };
   console.log("location:", location.state);
   return (

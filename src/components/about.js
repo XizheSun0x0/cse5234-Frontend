@@ -35,7 +35,9 @@ function About() {
                 <div className="team-member" key={member.name}>
                     <img src={member.image} alt={member.name} />
                     <h2>{member.name}</h2>
+                    <i className="fas fa-code"></i>
                     <h3>{member.title}</h3>
+                    <i className="fas fa-code"></i>
                     <p>{member.description}</p>
                 </div>
             ))}

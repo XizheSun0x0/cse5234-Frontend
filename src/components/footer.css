@@ -1,8 +1,8 @@
 .footer{
     color: rgb(255, 255, 255);
-    position: relative;
-    bottom: 0;
-    height: auto;
+    position:relative;
+    bottom:auto;
+    height:auto;
     min-height: 5px;
     width: 100%;
     font-family: "Copperplate", fantasy;

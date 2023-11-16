@@ -1,13 +1,12 @@
 .navbar {
-    background-color:#091528;
-    height: 100px;
+    background-color:#0c1b33;
+    height: 90px;
     display:flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     font-family: "Copperplate", fantasy;
     position: sticky;
-    top: 0;
     z-index: 20;
   }
   
@@ -23,13 +22,13 @@
   .nav-logo {
     -webkit-text-fill-color: #d1f7ff;
    -webkit-text-stroke-width: 2px;
-   -webkit-text-stroke-color: #dfd0d5;
+   -webkit-text-stroke-color: #dfdcd0;
     align-items: center;
-    margin-left: 20px;
+    margin-right: 200px;
     cursor:pointer;
     text-decoration:wavy;
     font-style: italic;
-    font-size: 4rem;
+    font-size: 3rem;
     flex-grow: 1;
   }
   

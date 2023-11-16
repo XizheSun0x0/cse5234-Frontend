@@ -1,15 +1,20 @@
 import React, { useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import "./purchase.css";
 
 const Purchase = () => {
     const [inventory, setInventory] = useState({
-        selected_items: [],available_items: [],
+        selected_items: new Map(),available_items: [],
     });
     const navigate = useNavigate();
     const handlesubmit = (e) => {
-        navigate('/purchase/paymentEntry', { state:inventory.selected_items});
+        if (inventory.selected_items.size > 0) {
+            navigate('/cart', { state:inventory});
+        } else {
+            navigate('/cart');
+        }
+        
     }
-    console.log("order: ", inventory);
 
 
     useEffect(() => {
@@ -24,17 +29,24 @@ const Purchase = () => {
             });
     }, []);
 
+
     // This handles changes to any of the quantity inputs.
     const handleQuantityChange = (item, quantity) => {
-        setInventory(inventory => {
-            inventory.selected_items.push({
-                ...item,
-                selected_quantity: quantity,
-            });
+        if(quantity>0){
+        setInventory((prevInventory) => {
+            const newSelectedItems = new Map(prevInventory.selected_items);
+            newSelectedItems.set(item, parseInt(quantity, 10) || 0);
+    
             return {
-                ...inventory
+                ...prevInventory,
+                selected_items: newSelectedItems,
             };
         });
+        }
+        else {
+            return null;
+        }
+            
     };
 
     return (
@@ -42,12 +54,13 @@ const Purchase = () => {
             <form onSubmit={handlesubmit}>
                 {inventory.available_items.map((item) => (
                     <div key={item.id} className="item-entry">
-                        <label>{item.name} (${item.price})</label>
+                        <label className="item-name">{item.name} (${item.price})</label>
                         <input 
+                            className="item-price"
                             type="number"
                             min="0"
                             max={item.available_quantity}
-                            value={item.buyQuantity}
+                            value={inventory.selected_items.get(item) || 0}
                             onChange={(e) => handleQuantityChange(item, e.target.value)}
                             required
                         />

@@ -1,10 +1,10 @@
 .purchase{
   background-color: rgb(255, 255, 255);
     width: 100%;
-    max-width:600px;
+    max-width:900px;
     margin: 0 auto;
     padding: 100px;
-    box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2000px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 .payment {

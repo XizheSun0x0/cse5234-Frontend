@@ -20,15 +20,15 @@
   }
   
   .nav-logo {
-    -webkit-text-fill-color: #d1f7ff;
+  -webkit-text-fill-color: #d1f7ff;
    -webkit-text-stroke-width: 2px;
-   -webkit-text-stroke-color: #dfdcd0;
+   -webkit-text-stroke-color:#ff2a6d;
     align-items: center;
     margin-right: 200px;
     cursor:pointer;
     text-decoration:wavy;
     font-style: italic;
-    font-size: 3rem;
+    font-size: 4rem;
     flex-grow: 1;
   }
   

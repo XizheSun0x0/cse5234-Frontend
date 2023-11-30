@@ -1,8 +1,10 @@
 .aboutus {
+    background-color: rgb(255, 255, 255);
     text-align: center;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 100px;
+    box-shadow: 0 0 2000px rgba(0, 0, 0, 0.1);
 }
 
 .aboutus h1 {
@@ -12,21 +14,37 @@
 }
 
 .team-member {
-    margin-bottom: 2rem;
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 50px;
     padding: 1rem;
     border-bottom: 1px solid #eaeaea;
 }
 
-.team-member img {
-    width:150px;
-    height: 200px;
+.member-details {
+    display: flex;
+  flex-direction:column;  /* Align items vertically in the flex container */
+  }
+
+  .member-details h2{
+    margin-right: 50px;
+  }
+
+  .member-image {
     border-radius: 100%;
-    margin-bottom: 1rem;
+    width: 150px; /* Set the width of the member image */
+    height: 200px; /* Set the height of the member image */
+    margin-right: 20px; /* Adjust the margin between the image and text */
+  }
+
+.member-info{
+    display: flex;
+  flex-direction:row;
+  margin-left: 100px;
 }
 
-.team-member h2 {
-    color: #222;
-    font-size: 1.75rem;
+.member-description{
+    margin-left: 100px;
 }
 
 .team-member h3 {
@@ -39,7 +57,6 @@
     font-size: 1rem;
     line-height: 1.5;
     max-width: 800px;
-    margin: 0 auto;
     text-align: left;
 }
 
@@ -60,3 +77,6 @@
         text-align: justify;
     }
 }
+
+
+

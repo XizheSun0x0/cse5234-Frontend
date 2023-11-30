@@ -1,17 +1,19 @@
 .cart-table {
     width: 80%;
     border-collapse: collapse;
-    margin: 20px auto; /* Center the table horizontally with auto margins */
+    max-width:900px;
+    margin: 0 auto; /* Center the table horizontally with auto margins */
   }
   
+
   .cart-table th, .cart-table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: center;
   }
   
   .cart-table th {
-    background-color: #ff2a6d;
+    background-color: #726e6f;
     color: white;
   }
   
@@ -22,7 +24,6 @@
   .empty-cart {
     width: 100%;
     border-collapse: collapse;
-    margin: 50px auto; 
   }
 
   .empty-cart-container {
@@ -30,11 +31,11 @@
     flex-direction: column;
     align-items: center; /* Optional: Center items horizontally */
     justify-content: center; /* Optional: Center items vertically */
-    margin: 100px auto;
-    margin-bottom: 20px;
   }
   
   
   .cart{
-    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    max-width:900px;
+    margin: 0 auto;
   }

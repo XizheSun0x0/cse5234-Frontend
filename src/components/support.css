@@ -1,7 +1,8 @@
-/* Home.css */
+/* Support.css */
 
-.home-container {
+.support-container {
     background-color: rgb(255, 255, 255);
+    text-align: center;
     max-width: 900px;
     margin: 0 auto;
     padding: 100px;
@@ -12,17 +13,12 @@
     margin-bottom: 20px;
   }
   
-  .company-name {
-    background-color: #6daebe;
-    padding: 10px;
-  }
-  
-  .mission-vision, .business-strategy, .customer-message {
+  .general-feedback, .payment-lend-time, .over-extended-lend-period, .customer-message {
     border: 1px solid #ddd;
     padding: 15px;
   }
   
-  h2 {
+  h1, h2 {
     color:black;
   }
   

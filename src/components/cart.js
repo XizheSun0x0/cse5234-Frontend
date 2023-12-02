@@ -59,27 +59,33 @@ const Cart = () => {
 
             // Return the table of JSX elements and total price
             return (
-                <form onSubmit={handlesubmit}>
-                    <table className="cart-table">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>{itemRows}</tbody>
-                    </table>
-                    <div className="total-price">
-                        Total Price: ${totalPrice.toFixed(2)}
-                    </div>
-                    <button type="submit" className="button">
-                        Go to Payment
-                    </button>
-                </form>
+                <div className="cart-content">
+                    <form onSubmit={handlesubmit}>
+                        <table className="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>{itemRows}</tbody>
+                        </table>
+                        <div className="total-price">
+                            Total Price: ${totalPrice.toFixed(2)}
+                        </div>
+                        <button type="submit" className="button">
+                            Go to Payment
+                        </button>
+                    </form>
+                </div>
             )
         } else {
-            return <RenderEmptyCart />
+            return (
+                <div>
+                    <RenderEmptyCart />
+                </div>
+            )
         }
     }
 

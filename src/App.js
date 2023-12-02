@@ -37,7 +37,7 @@ function App() {
 
   const myStyle = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "50%",
     backgroundRepeat: "repeat",
   };
 
@@ -54,13 +54,10 @@ function App() {
 
             <Route path="/purchase" element={<Purchase />} />
             <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="/purchase/paymentEntry" element={<PaymentEntry />} />
-            <Route path="/purchase/shippingEntry" element={<ShippingEntry />} />
-            <Route path="/purchase/viewOrder" element={<ViewOrder />} />
-            <Route
-              path="/purchase/viewConfirmation"
-              element={<ViewConfirmation />}
-            />
+            <Route path="/paymentEntry" element={<PaymentEntry />} />
+            <Route path="/shippingEntry" element={<ShippingEntry />} />
+            <Route path="/viewOrder" element={<ViewOrder />} />
+            <Route path="/viewConfirmation" element={<ViewConfirmation />} />
           </Routes>
         </div>
         <SampleFooter />

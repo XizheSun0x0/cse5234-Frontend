@@ -1,16 +1,20 @@
 import React, { useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import "./purchase.css";
 
 const Purchase = () => {
-    const [order, setOrder] = useState({
-        selected_items: [],items: [], credit_card_numer: '', expir_date: '', cvvcode: '',
-        card_holder_name: '',name:'' ,address_1: '', address_2: '', city: '', state: '', zip: '',
+    const [inventory, setInventory] = useState({
+        selected_items: new Map(),available_items: [],
     });
     const navigate = useNavigate();
     const handlesubmit = (e) => {
-        navigate('/purchase/paymentEntry', { state:order});
+        if (inventory.selected_items.size > 0) {
+            navigate('/cart', { state:inventory});
+        } else {
+            navigate('/cart');
+        }
+        
     }
-    console.log("order: ", order);
 
 
     useEffect(() => {
@@ -18,58 +22,52 @@ const Purchase = () => {
             .then(res => res.json())
             .then(items => {
                 // Create a new object for the order state with the fetched items
-                setOrder(prevOrder => ({
-                    ...prevOrder,
-                    items: items.map(item => ({
-                        ...item,
-                        quantity: 0 // Assuming you want to initialize buyQuantity as 0
-                    }))
+                setInventory(inventory => ({
+                    ...inventory,
+                    available_items: items,
                 }));
             });
     }, []);
 
+
     // This handles changes to any of the quantity inputs.
-    const handleQuantityChange = (itemId, quantity) => {
-        setOrder(prevOrder => {
-            const updatedItems = prevOrder.items.map(item =>
-                item.id === itemId ? { ...item, quantity: Number(quantity) } : item
-            );
-
-            const selectedItems = updatedItems
-                .filter(item => item.quantity > 0)
-                .map(item => ({
-                    id: item.id,
-                    quantity: item.quantity,
-                    name: item.name,
-                    price: item.price,
-                }));
-
+    const handleQuantityChange = (item, quantity) => {
+        if(quantity>0){
+        setInventory((prevInventory) => {
+            const newSelectedItems = new Map(prevInventory.selected_items);
+            newSelectedItems.set(item, parseInt(quantity, 10) || 0);
+    
             return {
-                ...prevOrder,
-                items: updatedItems,
-                selected_items: selectedItems
+                ...prevInventory,
+                selected_items: newSelectedItems,
             };
         });
+        }
+        else {
+            return null;
+        }
+            
     };
 
     return (
         <div className="purchase">
             <form onSubmit={handlesubmit}>
-                {order.items.map((item) => (
+                {inventory.available_items.map((item) => (
                     <div key={item.id} className="item-entry">
-                        <label>{item.name} (${item.price})</label>
+                        <label className="item-name">{item.name} (${item.price})</label>
                         <input 
+                            className="item-price"
                             type="number"
                             min="0"
-                            // max={item.available_quantity}
-                            value={item.buyQuantity}
-                            onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                            max={item.available_quantity}
+                            value={inventory.selected_items.get(item) || 0}
+                            onChange={(e) => handleQuantityChange(item, e.target.value)}
                             required
                         />
                         <br />
                     </div>
                 ))}
-                <button type="submit" className="button">Pay</button>
+                <button type="submit" className="button">Add to cart</button>
             </form>
         </div>
     );

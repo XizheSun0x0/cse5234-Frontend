@@ -1,0 +1,26 @@
+/* Support.css */
+
+.support-container {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px;
+    box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  .general-feedback, .payment-lend-time, .over-extended-lend-period, .customer-message {
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  h1, h2 {
+    color:black;
+  }
+  
+  /* Add more styling as needed */
+  

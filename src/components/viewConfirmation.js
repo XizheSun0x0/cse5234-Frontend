@@ -3,7 +3,7 @@ import React,{useEffect,useState} from "react";
 import { useLocation, useNavigate} from 'react-router-dom';
 
 const ViewConfirmarion = () => {
-    const [confirmationNumber, setConfirmationNumber] = useState(null);
+    const [confirmationNumbers, setConfirmationNumbers] = useState(null);
     const [error, setError] = useState(null);
     const location = useLocation();
     console.log(location.state)
@@ -40,8 +40,8 @@ const ViewConfirmarion = () => {
                 });
 
                 const result = await response.json();
-                if (response.ok && result['confirmation number']) {
-                    setConfirmationNumber(result['confirmation number']);
+                if (response.ok && result['order_confirmation_number']) {
+                    setConfirmationNumbers(result);
                 } else if (result.Error) {
                     setError(result.Error);
                 }
@@ -58,11 +58,19 @@ const ViewConfirmarion = () => {
             setError('No items to process.');
         }
     }, [location.state]);
+    console.log(confirmationNumbers)
     return (
         <div>
             <h1>Thanks for your order!</h1>
-            {confirmationNumber && (
-                <h2>Confirmation number: {confirmationNumber}</h2>
+            {confirmationNumbers && (
+                <div className="thanks">
+                    <h2>Order Information:</h2>
+                    {Object.entries(confirmationNumbers).map(([key, value]) => (
+                        <div className="number-record" key={key}>
+                            <h2>{key}: {value}</h2>
+                        </div>
+                    ))}
+                </div>
             )}
             {error && (
                 <div>
@@ -72,6 +80,7 @@ const ViewConfirmarion = () => {
             )}
         </div>
     );
+    
 };
 
 export default ViewConfirmarion;

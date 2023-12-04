@@ -56,8 +56,8 @@ function App() {
             <Route path="/" element={<Navigate replace to="/home" />} />
             <Route path="/paymentEntry" element={<PaymentEntry />} />
             <Route path="/shippingEntry" element={<ShippingEntry />} />
-            <Route path="/viewOrder" element={<ViewOrder />} />
-            <Route path="/viewConfirmation" element={<ViewConfirmation />} />
+            <Route path="/purchase/vieworder" element={<ViewOrder />} />
+            <Route path="/purchase/viewconfirmation" element={<ViewConfirmation />} />
           </Routes>
         </div>
         <SampleFooter />

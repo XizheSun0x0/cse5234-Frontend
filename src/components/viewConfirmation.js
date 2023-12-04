@@ -25,7 +25,6 @@ const ViewConfirmarion = () => {
     }
     
 
-    const transformedSelectedItems = transformSelectedItems(location.state);
 
     console.log({"before return":location.state})
     useEffect(() => {

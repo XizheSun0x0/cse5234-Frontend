@@ -8,25 +8,23 @@ const ViewOrder = () => {
     const handlesubmit = (e) => {
         navigate('/purchase/viewconfirmation', { state: location.state});
     }
-
+    
     return (
         <div>
             <h2>Order detail:</h2>
-            {/* <br />
-            <h3>product 1 &emsp; &emsp; quantity:{location.state.buyQuantity[0] }</h3>
-            <br />
-            <h3>product 2 &emsp; &emsp; quantity:{location.state.buyQuantity[1]}</h3>
-            <br /> */}
             {
-                location.state.selected_items.map((item)=>(
-                    <div key = {item.id}>
-                        <label>{item.id} ({'x'}{item.selected_quantity})</label>
+                location.state.selected_items && location.state.selected_items.size > 0 ?
+                Array.from(location.state.selected_items, ([item, quantity]) => (
+                    <div key={item.id}>
+                        <label>{item.name} - Quantity: {quantity}</label>
                     </div>
-                ))
+                )) :
+                <p>No items selected.</p>
             }
             <button className="button" onClick={handlesubmit}>Confirm order</button>
         </div>
     );
+    
 };
 
 export default ViewOrder;

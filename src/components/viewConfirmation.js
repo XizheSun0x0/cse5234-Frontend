@@ -23,7 +23,7 @@ const ViewConfirmarion = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ items: location.state.selected_items }),
+                    body: location.state
                 });
 
                 const result = await response.json();

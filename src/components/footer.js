@@ -5,7 +5,6 @@ import 'rc-footer/assets/index.css';
 // import 'rc-footer/asssets/index.less';
 import './footer.css'
 
-console.log("footer here!");
 const SampleFooter = () => ( 
   <Footer  className='footer'
   onClick

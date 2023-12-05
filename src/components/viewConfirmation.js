@@ -3,18 +3,31 @@ import React,{useEffect,useState} from "react";
 import { useLocation, useNavigate} from 'react-router-dom';
 
 const ViewConfirmarion = () => {
-    // const confirmationNum = '0000000000000000';
-    // const location = useLocation();
-    // console.log("location: ", location.state);
-    // return (
-    //     <div>
-    //         <h1>Thanks for your order!</h1>
-    //         <h2>Confirmation number: {confirmationNum}</h2>
-    //     </div>
-    // );
-    const [confirmationNumber, setConfirmationNumber] = useState(null);
+    const [confirmationNumbers, setConfirmationNumbers] = useState(null);
     const [error, setError] = useState(null);
     const location = useLocation();
+    console.log(location.state)
+
+    function transformSelectedItems(locationState) {
+        // Check if 'selected_items' exists and is a Map
+        if (locationState.selected_items && locationState.selected_items instanceof Map) {
+            // Transform the Map into an array of objects
+            const transformedItems = Array.from(locationState.selected_items, ([item, quantity]) => {
+                return {
+                    id: item.id, // Assuming 'id' is a property of the item object
+                    quantity: quantity
+                };
+            });
+    
+            // Update the 'selected_items' in locationState with the new array
+            locationState.selected_items = transformedItems;
+        }
+    }
+    
+
+    const transformedSelectedItems = transformSelectedItems(location.state);
+
+    console.log({"before return":location.state})
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,12 +36,12 @@ const ViewConfirmarion = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ items: location.state.selected_items }),
+                    body: JSON.stringify(location.state)
                 });
 
                 const result = await response.json();
-                if (response.ok && result['confirmation number']) {
-                    setConfirmationNumber(result['confirmation number']);
+                if (response.ok && result['order_confirmation_number']) {
+                    setConfirmationNumbers(result);
                 } else if (result.Error) {
                     setError(result.Error);
                 }
@@ -45,11 +58,19 @@ const ViewConfirmarion = () => {
             setError('No items to process.');
         }
     }, [location.state]);
+    console.log(confirmationNumbers)
     return (
         <div>
             <h1>Thanks for your order!</h1>
-            {confirmationNumber && (
-                <h2>Confirmation number: {confirmationNumber}</h2>
+            {confirmationNumbers && (
+                <div className="thanks">
+                    <h2>Order Information:</h2>
+                    {Object.entries(confirmationNumbers).map(([key, value]) => (
+                        <div className="number-record" key={key}>
+                            <h2>{key}: {value}</h2>
+                        </div>
+                    ))}
+                </div>
             )}
             {error && (
                 <div>
@@ -59,6 +80,7 @@ const ViewConfirmarion = () => {
             )}
         </div>
     );
+    
 };
 
 export default ViewConfirmarion;

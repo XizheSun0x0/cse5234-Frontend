@@ -1,18 +1,20 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useCart } from '../CartContext'
 import './cart.css'
 import emptyCart from './images/empty-cart.png'
 
 const Cart = () => {
     const location = useLocation()
+    const { addToCart, cartState } = useCart()
     const navigate = useNavigate()
     const handlesubmit = () => {
         navigate('/paymentEntry', { state: location.state })
     }
+    console.log(location.state)
     const handleBackToPurchase = () => {
         navigate('/purchase')
     }
-    console.log(location.state)
 
     const RenderEmptyCart = () => {
         return (
@@ -40,8 +42,8 @@ const Cart = () => {
     }
 
     const RenderCart = () => {
-        if (location.state !== null) {
-            const itemRows = Array.from(location.state.selected_items).map(
+        if (cartState.selected_items.size !== 0) {
+            const itemRows = Array.from(cartState.selected_items).map(
                 ([item, quantity]) => (
                     <tr key={item.name}>
                         <td>{item.name}</td>
@@ -52,7 +54,7 @@ const Cart = () => {
             )
 
             // Calculate total price
-            const totalPrice = Array.from(location.state.selected_items).reduce(
+            const totalPrice = Array.from(cartState.selected_items).reduce(
                 (total, [item, quantity]) => total + item.price * quantity,
                 0
             )

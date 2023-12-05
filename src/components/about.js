@@ -11,7 +11,7 @@ function About() {
             title: 'CEO',
             image: benimg,
             description:
-                'Ben is the CEO and founder of the company. He loves coding and hiking.',
+                'Ben is the CEO and founder of the company.He is a grad student studying computer science and engineeing. He loves coding and hiking.',
         },
         {
             name: 'Xizhe Sun',
@@ -46,11 +46,9 @@ function About() {
                     </div>
                     <div className="member-info">
                         <div className="member-title">
-                            <i className="fas fa-code"></i>
                             <h3>{member.title}</h3>
                         </div>
                         <div className="member-description">
-                            <i className="fas fa-code"></i>
                             <p>{member.description}</p>
                         </div>
                     </div>

@@ -1,33 +1,38 @@
 /* eslint-disable no-unused-vars */
-import React,{useEffect,useState} from "react";
-import { useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const ViewConfirmarion = () => {
-    const [confirmationNumbers, setConfirmationNumbers] = useState(null);
-    const [error, setError] = useState(null);
-    const location = useLocation();
+    const [confirmationNumbers, setConfirmationNumbers] = useState(null)
+    const [error, setError] = useState(null)
+    const location = useLocation()
     console.log(location.state)
 
     function transformSelectedItems(locationState) {
         // Check if 'selected_items' exists and is a Map
-        if (locationState.selected_items && locationState.selected_items instanceof Map) {
+        if (
+            locationState.selected_items &&
+            locationState.selected_items instanceof Map
+        ) {
             // Transform the Map into an array of objects
-            const transformedItems = Array.from(locationState.selected_items, ([item, quantity]) => {
-                return {
-                    id: item.id, // Assuming 'id' is a property of the item object
-                    quantity: quantity
-                };
-            });
-    
+            const transformedItems = Array.from(
+                locationState.selected_items,
+                ([item, quantity]) => {
+                    return {
+                        id: item.id, // Assuming 'id' is a property of the item object
+                        quantity: quantity,
+                    }
+                }
+            )
+
             // Update the 'selected_items' in locationState with the new array
-            locationState.selected_items = transformedItems;
+            locationState.selected_items = transformedItems
         }
     }
-    
 
-    const transformedSelectedItems = transformSelectedItems(location.state);
+    const transformedSelectedItems = transformSelectedItems(location.state)
 
-    console.log({"before return":location.state})
+    console.log({ 'before return': location.state })
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -36,38 +41,40 @@ const ViewConfirmarion = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(location.state)
-                });
+                    body: JSON.stringify(location.state),
+                })
 
-                const result = await response.json();
+                const result = await response.json()
                 if (response.ok && result['order_confirmation_number']) {
-                    setConfirmationNumbers(result);
+                    setConfirmationNumbers(result)
                 } else if (result.Error) {
-                    setError(result.Error);
+                    setError(result.Error)
                 }
             } catch (e) {
-                setError('Failed to process the order.');
-                console.error('There was an error processing your request:', e);
+                setError('Failed to process the order.')
+                console.error('There was an error processing your request:', e)
             }
-        };
+        }
 
         // Call the fetchData function if location.state.selected_items exists
         if (location.state && location.state.selected_items) {
-            fetchData();
+            fetchData()
         } else {
-            setError('No items to process.');
+            setError('No items to process.')
         }
-    }, [location.state]);
+    }, [location.state])
     console.log(confirmationNumbers)
     return (
-        <div>
+        <div className="container">
             <h1>Thanks for your order!</h1>
             {confirmationNumbers && (
                 <div className="thanks">
                     <h2>Order Information:</h2>
                     {Object.entries(confirmationNumbers).map(([key, value]) => (
                         <div className="number-record" key={key}>
-                            <h2>{key}: {value}</h2>
+                            <h2>
+                                {key}: {value}
+                            </h2>
                         </div>
                     ))}
                 </div>
@@ -79,8 +86,7 @@ const ViewConfirmarion = () => {
                 </div>
             )}
         </div>
-    );
-    
-};
+    )
+}
 
-export default ViewConfirmarion;
+export default ViewConfirmarion

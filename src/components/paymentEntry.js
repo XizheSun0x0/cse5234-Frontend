@@ -1,14 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './paymentEntry.css'
 
 const PaymentEntry = () => {
     const location = useLocation()
+    const [state, setState] = useState({})
     const navigate = useNavigate()
     const handlesubmit = (e) => {
-        navigate('/shippingEntry', { state: location.state })
+        navigate('/shippingEntry', { state: state })
     }
+
+    useEffect(() => {
+        setState((state) => ({
+            ...state,
+            ...location.state,
+        }))
+    })
 
     return (
         <div className="container">
@@ -21,8 +29,7 @@ const PaymentEntry = () => {
                             type="text"
                             required
                             onChange={(e) => {
-                                location.state.credit_card_numer =
-                                    e.target.value
+                                state.credit_card_numer = e.target.value
                             }}
                         />
                     </div>
@@ -33,7 +40,7 @@ const PaymentEntry = () => {
                             type="text"
                             required
                             onChange={(e) => {
-                                location.state.cvvcode = e.target.value
+                                state.cvvcode = e.target.value
                             }}
                         />
                     </div>
@@ -44,7 +51,7 @@ const PaymentEntry = () => {
                             type="text"
                             required
                             onChange={(e) => {
-                                location.state.card_holder_name = e.target.value
+                                state.card_holder_name = e.target.value
                             }}
                         />
                     </div>
@@ -57,12 +64,11 @@ const PaymentEntry = () => {
                             onChange={(e) => {
                                 // Create a new date object and set the month
                                 const newExpiry = new Date(
-                                    location.state.expir_date || new Date()
+                                    state.expir_date || new Date()
                                 )
                                 newExpiry.setMonth(e.target.value - 1) // Month is 0-indexed
                                 // Update the date in the location state
-                                location.state.expir_date =
-                                    newExpiry.toISOString()
+                                state.expir_date = newExpiry.toISOString()
                             }}
                         >
                             <option value="">Month</option>
@@ -78,12 +84,11 @@ const PaymentEntry = () => {
                             onChange={(e) => {
                                 // Create a new date object and set the year
                                 const newExpiry = new Date(
-                                    location.state.expir_date || new Date()
+                                    state.expir_date || new Date()
                                 )
                                 newExpiry.setFullYear(e.target.value)
                                 // Update the date in the location state
-                                location.state.expir_date =
-                                    newExpiry.toISOString()
+                                state.expir_date = newExpiry.toISOString()
                             }}
                         >
                             <option value="">Year</option>

@@ -13,8 +13,12 @@
   }
   
   .company-name {
-    background-color: #6daebe;
+    background-color:#0c1b33;
     padding: 10px;
+    -webkit-text-fill-color: #d1f7ff;
+   -webkit-text-stroke-width: 2px;
+   -webkit-text-stroke-color:#ff2a6d;
+   font-size:25px;
   }
   
   .mission-vision, .business-strategy, .customer-message {

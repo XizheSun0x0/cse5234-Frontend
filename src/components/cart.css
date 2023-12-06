@@ -9,6 +9,28 @@
     box-shadow: 0 0 2000px rgba(0, 0, 0, 0.1);
   }
 
+  .plus-button, .minus-button{
+    background-color: #0c1b33; /* Green */
+  color: white;
+  border-radius: 8px;
+  border: 2px solid #0c1b33; 
+  transition-duration: 0.4s;
+  }
+
+  .plus-button:hover, .minus-button:hover{
+    background-color:  white; /* Green */
+    color: #0c1b33;
+  }
+
+  .clear-button{
+    float: left;
+    margin-left: 100px;
+  }
+
+  .next-button{
+    float: right;
+    margin-right: 100px;
+  }
 
 .cart-table {
     width: 80%;
@@ -43,4 +65,9 @@
     flex-direction: column;
     align-items: center; /* Optional: Center items horizontally */
     justify-content: center; /* Optional: Center items vertically */
+  }
+
+  .total-price{
+    font-size: 20px;
+    padding: 20px;
   }

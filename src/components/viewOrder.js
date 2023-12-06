@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 const ViewOrder = () => {
     const location = useLocation()
-    const { addToCart, cartState } = useCart()
+    const { clearCart, cartState } = useCart()
     const navigate = useNavigate()
     const handlesubmit = (e) => {
         navigate('/purchase/viewconfirmation', {
@@ -14,8 +14,9 @@ const ViewOrder = () => {
                 selected_items: cartState.selected_items,
             },
         })
+        clearCart()
     }
-    console.log(location.state)
+    // console.log(location.state)
     return (
         <div className="container">
             <h2>Order detail:</h2>

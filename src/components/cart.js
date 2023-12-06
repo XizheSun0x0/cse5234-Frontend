@@ -6,14 +6,27 @@ import emptyCart from './images/empty-cart.png'
 
 const Cart = () => {
     const location = useLocation()
-    const { addToCart, cartState } = useCart()
+    const { clearCart, addToCart, cartState, deleteItem } = useCart()
     const navigate = useNavigate()
     const handlesubmit = () => {
-        navigate('/paymentEntry', { state: location.state })
+        navigate('/paymentEntry', { state: cartState })
     }
-    console.log(location.state)
+    // console.log(location.state)
     const handleBackToPurchase = () => {
         navigate('/purchase')
+    }
+
+    const handleIncreaseQuantity = (item) => {
+        addToCart(item, 1)
+    }
+
+    const handleDecreaseQuantity = (item) => {
+        const currentQuantity = cartState.selected_items.get(item)
+        if (currentQuantity > 1) {
+            addToCart(item, -1)
+        } else {
+            deleteItem(item)
+        }
     }
 
     const RenderEmptyCart = () => {
@@ -48,7 +61,21 @@ const Cart = () => {
                     <tr key={item.name}>
                         <td>{item.name}</td>
                         <td>${item.price}</td>
-                        <td>{quantity}</td>
+                        <td>
+                            <button
+                                className="minus-button"
+                                onClick={() => handleDecreaseQuantity(item)}
+                            >
+                                -
+                            </button>
+                            {quantity}
+                            <button
+                                className="plus-button"
+                                onClick={() => handleIncreaseQuantity(item)}
+                            >
+                                +
+                            </button>
+                        </td>
                     </tr>
                 )
             )
@@ -76,7 +103,14 @@ const Cart = () => {
                         <div className="total-price">
                             Total Price: ${totalPrice.toFixed(2)}
                         </div>
-                        <button type="submit" className="button">
+                        <button
+                            type="button"
+                            className="button clear-button"
+                            onClick={clearCart}
+                        >
+                            Clear Cart
+                        </button>
+                        <button type="submit" className="button next-button">
                             Go to Payment
                         </button>
                     </form>

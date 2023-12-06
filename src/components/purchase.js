@@ -38,13 +38,13 @@ const Purchase = () => {
         if (inventory.selected_items.get(item) > 0) {
             addToCart(item, inventory.selected_items.get(item))
             // Optionally, you can reset the selected quantity for the item
-            // setInventory((prevInventory) => ({
-            //     ...prevInventory,
-            //     selected_items: new Map([
-            //         ...prevInventory.selected_items,
-            //         [item, 0],
-            //     ]),
-            // }))
+            setInventory((prevInventory) => ({
+                ...prevInventory,
+                selected_items: new Map([
+                    ...prevInventory.selected_items,
+                    [item, 0],
+                ]),
+            }))
         }
     }
 

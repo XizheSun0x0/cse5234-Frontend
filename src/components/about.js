@@ -18,7 +18,7 @@ function About() {
             title: 'CTO',
             image: xizheimg,
             description:
-                'Xizhe is the CTO and co-founder. He is passionate about design and travel.',
+                'Xizhe is the CTO and co-founder. He is a undergrad in computer science and engineering. He is passionate about design and travel.',
         },
         {
             name: 'Vishu Singh',

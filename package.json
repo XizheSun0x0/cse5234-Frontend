@@ -1,7 +1,7 @@
 {
   "name": "cse5234",
   "version": "0.1.0",
-  "proxy": "https://wkekk54ev4.execute-api.us-east-2.amazonaws.com/dev/",
+  "proxy": "https://l4tdyh5ini7iip423mxa5zlidm0qovta.lambda-url.us-east-2.on.aws/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",

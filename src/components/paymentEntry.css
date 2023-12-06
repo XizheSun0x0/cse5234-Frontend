@@ -1,9 +1,9 @@
 /* PaymentEntry.css */
 .container {
-    width: 100%;
-    max-width: 400px; /* Set the max width for the form */
-    margin: 20px auto;
-    padding: 20px;
+  width: 100%;
+    max-width:900px;
+    margin: 0 auto;
+    padding: 100px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds a slight shadow to make the form pop a bit */
     border-radius: 8px; /* Optional: rounds the corners */
     background: #fff; /* Change as necessary */
@@ -11,54 +11,54 @@
   
   .container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
   }
   
   .form-group {
+    width: 100%;
+    max-width:500px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px; /* Space between form groups */
+    /* Space between form groups */
+    text-align: left;
   }
   
   .form-group label {
-    margin-bottom: 5px; /* Space between label and input */
+    font-size:20px ;
+    margin-bottom: 0px; /* Space between label and input */
   }
   
+  .input-select {
+    text-align: right;
+    margin-top: -30px;
+  }
   .form-group input[type="text"],
   .form-group select {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
   }
   
-  .button {
-    width: 33%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #d1f7ff;
-    color: black;
-    font-size: 16px;
+  .button-style {
+    text-align: center;
+  }
+
+  .button-style button{
+    background: #000000;
+    color: #ffffff;
+    border: 0;
+    font-family: "Copperplate", fantasy;
+    font-size:20px ;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border: #262021;
   }
   
-  .button:hover {
-    background-color: #d1f7ff;
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px; /* adjust as necessary */
-    margin: auto;
-  }
-  
-  .form-container label,
-  .form-container input,
-  .form-container select,
-  .form-container button {
-    margin-bottom: 10px; /* Space out the elements */
+  .button-style button:hover {
+    background-color: #808080;
   }
   
   /* Style the select elements to appear on the same line */

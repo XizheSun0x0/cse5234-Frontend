@@ -1,0 +1,14 @@
+.shippingEntry-container {
+    width: 100%;
+      max-width:900px;
+      margin: 0 auto;
+      padding: 100px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds a slight shadow to make the form pop a bit */
+      border-radius: 8px; /* Optional: rounds the corners */
+      background: #fff; /* Change as necessary */
+    }
+    
+    .shippingEntry-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }

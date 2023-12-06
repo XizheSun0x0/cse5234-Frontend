@@ -14,7 +14,7 @@
 
 .team-member {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     margin-left: 50px;
     padding: 1rem;
     border-top: 1px solid #eaeaea;
@@ -27,7 +27,7 @@
 
   .member-details h2{
     color: #333;
-    margin-right: 50px;
+    margin-left: -30px;
   }
 
   .member-image {
@@ -35,6 +35,7 @@
     width: 150px; /* Set the width of the member image */
     height: 200px; /* Set the height of the member image */
     margin-right: 20px;
+    margin-top: 50px;
   }
 
 .member-info{
@@ -43,6 +44,11 @@
 }
 
 .member-description{
+    margin-left: 100px;
+}
+
+.member-title{
+    margin-top: 20px;
     margin-left: 100px;
 }
 

@@ -43,7 +43,7 @@ const ViewConfirmarion = () => {
                     },
                     body: JSON.stringify(location.state),
                 })
-
+                console.log('herere')
                 const result = await response.json()
                 if (response.ok && result['order_confirmation_number']) {
                     setConfirmationNumbers(result)

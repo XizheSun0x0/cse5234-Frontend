@@ -8,10 +8,11 @@ import React, { createContext, useContext, useReducer } from "react";
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {
+  let newMap;
   switch (action.type) {
     case "ADD_TO_CART":
       // Add the item to the cart
-      let newMap;
+
       if (!state.selected_items.has(action.payload[0])) {
         newMap = new Map([...state.selected_items, action.payload]);
       } else {
@@ -29,6 +30,14 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selected_items: new Map(),
+      };
+    case "DELETE_ITEM":
+      newMap = new Map([...state.selected_items]);
+      newMap.delete(action.payload[0]);
+
+      return {
+        ...state,
+        selected_items: newMap,
       };
     default:
       return state;
@@ -48,8 +57,14 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART", payload: [] });
   };
 
+  const deleteItem = (item) => {
+    dispatch({ type: "DELETE_ITEM", payload: [item] });
+  };
+
   return (
-    <CartContext.Provider value={{ cartState, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cartState, addToCart, clearCart, deleteItem }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -6,7 +6,7 @@ import emptyCart from './images/empty-cart.png'
 
 const Cart = () => {
     const location = useLocation()
-    const { clearCart, addToCart, cartState } = useCart()
+    const { clearCart, addToCart, cartState, deleteItem } = useCart()
     const navigate = useNavigate()
     const handlesubmit = () => {
         navigate('/paymentEntry', { state: cartState })
@@ -24,6 +24,8 @@ const Cart = () => {
         const currentQuantity = cartState.selected_items.get(item)
         if (currentQuantity > 1) {
             addToCart(item, -1)
+        } else {
+            deleteItem(item)
         }
     }
 

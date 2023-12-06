@@ -9,7 +9,7 @@ const Cart = () => {
     const { clearCart, addToCart, cartState } = useCart()
     const navigate = useNavigate()
     const handlesubmit = () => {
-        navigate('/paymentEntry', { state: location.state })
+        navigate('/paymentEntry', { state: cartState })
     }
     // console.log(location.state)
     const handleBackToPurchase = () => {
